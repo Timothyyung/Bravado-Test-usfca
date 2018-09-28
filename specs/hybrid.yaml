@@ -1,0 +1,97 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Simple API
+  description: a simple API to test nested Spec
+
+schemes:
+  - http
+host: simple.api
+basePath: /nested
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /persons:
+    get:
+      summary: get some persons
+      description: return a list containing all persons
+      responses:
+        '200':
+          description: a list of Person 
+          schema:
+            $ref: "#/definitions/Persons"
+
+definitions:
+  Persons:
+    type: object
+    properties:
+      persons:
+        type: array
+        items:
+          $ref: "#/definitions/Person"
+  Person:
+    type: object
+    discriminator: gender
+    required:
+      - gender
+      - username
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      adult:
+        type: boolean
+      username:
+        type: string
+      gender:
+        type: string
+        enum:
+          - 'Male'
+          - 'Female'
+      hair:
+        $ref: "#/definitions/Hair"
+      info:
+        type: array
+        items:
+          $ref: "#/definitions/Info"
+        x-nullable: true
+
+  Hair:
+    type: string
+    enum:
+      - 'black'
+      - 'golden'
+      - 'brown'
+  Info:
+    type: object
+    properties:
+      infoId:
+        type: integer
+      details:
+        type: string
+
+  Male:
+    allOf:
+      - $ref: "#/definitions/Person"
+      - type: object
+    properties:
+      MaleType: 
+        type: string
+      Sport:
+        type: string
+  Female:
+    allOf:
+      - $ref: "#/definitions/Person"
+      - type: object
+    properties:
+      FemaleType: 
+        type: string
+      Reading:
+        type: string 
+
+
