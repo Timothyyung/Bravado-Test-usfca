@@ -1,0 +1,92 @@
+swagger: '2.0'
+info:
+  title: Zoo Place
+  description: Zoo schema
+  version: 1.0.0
+host: localhost:3000
+basePath: /api/v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /animals:
+    get:
+      tags: ['Animals']
+      operationId: getAnimals
+      responses:
+        '200':
+          description: success
+          schema:
+            $ref: '#/definitions/Animals'
+    post:
+      tags: ['Animals']
+      operationId: create
+      parameters:
+        - name: animal
+          in : body
+          description : animal parameter
+          required: true
+          schema:
+            $ref: '#/definitions/Animals'
+      responses:
+        '200':
+          description: success
+          schema:
+            title: animal
+            $ref: '#definitions/Animals'
+  /animals/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: animal id
+        required: true
+        type: integer
+        format: int64
+    get:
+      tags: ['Animals']
+      operationId: getBookById
+      responses:
+        '200':
+          description: success
+          schema:
+            title: book
+            $ref: '#/definitions/Animals'
+
+definitions:
+  Animal:
+    type: object
+    required: [id]
+    properties:
+      id:
+        type: integer
+      animalname:
+        type: string
+      animaltype:
+        type: string
+      gender:
+        type: string
+
+  Animals:
+    type: object
+    properties:
+      animals:
+        description: a collection
+        items: 
+          $ref: '#definitions/Animal'
+        type: array
+    required: [animals]
+
+  ZooKeeper:
+    type: object
+    required: [id]
+    properties:
+      id:
+        type: integer
+      zooKeeperName:
+        type: string
+      salary:
+        type: integer
