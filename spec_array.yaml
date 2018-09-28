@@ -1,0 +1,82 @@
+swagger: '2.0'
+info:
+  title: My Swagger template.
+  description: My Swagger template testing.
+  version: 1.0.0
+host: 0.0.0.0:8000
+basePath: /myswag
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /person:
+    get:
+      tags: [Person]
+      responses:
+        '200':
+          description: success
+          schema:
+            $ref: '#definitions/Persons'
+            
+
+    post:
+      tags: [Person]
+      parameters:
+        - name: person
+          in: body
+          description: person paramaters.
+          required: true
+          schema:
+            $ref: '#definitions/Person'
+      responses:
+        '200':
+          description: success
+
+  /person/{username}:
+    parameters:
+      - name: username
+        in: path
+        description: username of the use
+        required: true
+        type: string
+    get:
+      tags: [Person]
+      responses:
+        '200': 
+          description: success
+          schema:
+            $ref: '#definitions/Person'
+
+
+
+
+definitions:
+  Person:
+    type: object
+    required: [username]
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      username:
+        type: string
+
+  Persons:
+    type: object
+    properties:
+      persons:
+        description: A collection of person.
+        items:
+          $ref: '#definitions/Person'
+        type: array
+    required: [persons]
+
+
+    
+
+
