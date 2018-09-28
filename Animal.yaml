@@ -1,0 +1,87 @@
+swagger:  '2.0'
+info:
+  title: PetControl
+  description: API for PetControl
+  version: 1.0.0
+host: localhost:3000
+basePath: /api/v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /movies:
+    get:
+      tags: [Pet]
+      operationId: getPetList
+      responses:
+        '200':
+          description: success
+          schema:
+            title: Pets
+            type: array
+            items:
+              $ref: '#definitions/PetList'
+    post:
+      tags: [Pet]
+      operationId: createPet
+      parameters:
+        - name: Pet
+          in: body
+          description: Pet parameter
+          required: true
+          schema:
+            $ref: '#/definitions/Pet'
+      responses:
+        '200':
+          description: success
+          schema:
+            title: Pet
+            $ref: '#/definitions/Pet'
+
+definitions:
+  Pet:
+    type: object
+    discriminator: petType
+    required: 
+      - id
+      - petType
+    properties:
+      id:
+        type: integer
+      petType:
+        type: string
+      weight:
+        type: integer
+      name:
+        type: string
+      birthday:
+        type: string
+  Dog:
+    allOf:
+      - $ref: '#/definitions/Pet'
+      - type: object
+    properties:
+      DogType:
+        type: string
+      Skill:
+        type: string
+  Cat:
+    allOf:
+      - $ref: '#/definitions/Pet'
+      - type: object
+    properties:
+      CatType:
+        type: string
+      temperament:
+        type: string
+  PetList:
+    type: object
+    properties:
+      Pets:
+        type: array
+        items:
+          $ref: '#/definitions/Pet'
