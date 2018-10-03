@@ -11,7 +11,7 @@ class benchmark:
     def __init__(self,data):
         
         self.animaldict = {'id': 1}
-        with open('zoo.yaml','r') as f:
+        with open('specs/zoo.yaml','r') as f:
             self.raw_spec = yaml.load(f)
         self.data = data
         self.animal = self.raw_spec['definitions']['Animals']
@@ -25,7 +25,7 @@ class benchmark:
 
 
 if __name__ == "__main__":
-    with open('animal10k.txt', 'r') as a:
+    with open('jsondata/animal10k.txt', 'r') as a:
         data =json.load(a)
 
     bench = benchmark(data)
