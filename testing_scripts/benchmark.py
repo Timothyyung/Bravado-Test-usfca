@@ -12,7 +12,7 @@ from unmarshal_nested import benchmark_nested
 
 if __name__ == "__main__":
     set_up = """
-from unmarshal_array import benchmark_nested
+from unmarshal_nested import benchmark_nested
 bench = benchmark_nested()"""
 
     func = 'bench.benchmark()'
