@@ -27,7 +27,7 @@ from unmarshal_benchmark import benchmark
 bench = benchmark()""")
 
     setup_dict.append("""
-from unmarshal_benchmark import benchmark
+from unmarshal_inherited import benchmark
 bench = benchmark_inherited()""")
 
     func = 'bench.benchmark()'
