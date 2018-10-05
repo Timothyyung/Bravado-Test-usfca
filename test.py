@@ -1,3 +1,0 @@
-import playground.helloworld
-
-helloworld()
