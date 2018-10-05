@@ -3,17 +3,24 @@ from bravado_core.spec import Spec
 from bravado_core.unmarshal import unmarshal_schema_object
 
 
-def unmarshal_test(data):
-    with open('../specs/spec_nested.yaml', 'r') as f:
-        raw_spec = yaml.load(f)
-    spec = Spec.from_dict(raw_spec)
-    school = raw_spec['definitions']['School']
 
-    school_obj = unmarshal_schema_object(spec, school,data)
-    #print(school_obj)
+class benchmark_nested:
+    def __init__(self):
+        with open('../specs/spec_nested.yaml', 'r') as f:
+            self.raw_spec = yaml.load(f)
 
-if __name__ == "__main__":
-    with open('../jsondata/nested10k.txt') as f:
-        data = json.load(f)
-    #unmarshal_test(data)
-    cProfile.run('unmarshal_test(data)', sort='tottime')
+        self.data = self.create_json()
+        self.spec = Spec.from_dict(self.raw_spec)
+        self.school = self.raw_spec['definitions']['School']
+
+   
+
+    def create_json(self):
+        with open('../jsondata/nested10k.txt') as f:
+            data = json.load(f)
+        return data        
+
+
+    def benchmark(self):    
+        school_obj = unmarshal_schema_object(self.spec, self.school,self.data)
+        print (school_obj)
