@@ -13,10 +13,14 @@ def unmarshal_test(data):
 
     persons_obj = unmarshal_schema_object(spec, persons,data)
 
-
-if __name__ == "__main__":
+def create_json():
     with open('../jsondata/array10k.txt') as f:
         data = json.load(f)
-    #unmarshal_test(data)
-    cProfile.run('unmarshal_test(data)', sort='tottime')
+    return data
+
+def benchmark():
+    json = create_json
+    unmarshal_test(json)
+
+
 
