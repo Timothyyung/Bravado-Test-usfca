@@ -22,7 +22,7 @@ class benchmark:
             data = json.load(a)
         return data
 
-    def unmarshal__10k(self):
+    def benchmark(self):
         spec_animal = unmarshal_schema_object(self.spec,self.animal,self.data)
         #print (spec_animal)
         

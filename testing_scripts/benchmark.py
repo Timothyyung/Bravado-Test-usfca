@@ -11,16 +11,23 @@ from unmarshal_benchmark import benchmark
 from unmarshal_nested import benchmark_nested
 
 if __name__ == "__main__":
-    set_up = """
+    setup_dict = []
+
+    setup_dict.append("""
 from unmarshal_nested import benchmark_nested
-bench = benchmark_nested()"""
+bench = benchmark_nested()""")
+    
+    setup_dict.append("""
+from unmarshal_array import benchmark_array
+bench = benchmark_array()""")
+
+    setup_dict.append("""
+from unmarshal_benchmark import benchmark
+bench = benchmark()""")
+
 
     func = 'bench.benchmark()'
-    times = timeit.timeit(stmt=func, setup=set_up, number=10)
-    #bench = benchmark_array()
-    #print('benchmark_array(): {}'.format(times))
-    #bench = benchmark()
-    #bench.unmarshal__10k()
-    #bench = benchmark_nested()
-    #bench.benchmark()
-    print('benchmark_nested(): {}'.format(times))
+    
+    for set_up in setup_dict:
+        times = timeit.timeit(stmt=func, setup=set_up, number=10)
+        print('benchmark {}'.format(times))
