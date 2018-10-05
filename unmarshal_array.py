@@ -1,10 +1,6 @@
 #-*- coding: utf-8 -*-
 
 import yaml, json, cProfile
-#from bashScript.bravadooptusfca.bravado_core.spec import Spec
-#from bashScript.bravadooptusfca.bravado_core.unmarshal import unmarshal_schema_object
-import sys
-sys.path.append('./bashScript/bravadooptusfca/bravado_core')
 from bravado_core.spec import Spec
 from bravado_core.unmarshal import unmarshal_schema_object
 
@@ -16,7 +12,7 @@ def unmarshal_test(data):
     persons = raw_spec['definitions']['Persons']
 
     persons_obj = unmarshal_schema_object(spec, persons,data)
-    print(persons_obj)
+
 
 if __name__ == "__main__":
     with open('jsondata/array10k.txt') as f:

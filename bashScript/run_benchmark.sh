@@ -4,6 +4,7 @@ python get_branches.py
 
 while read branch
 do
+    
 	./benchmark.py
 done < branches.txt
 
