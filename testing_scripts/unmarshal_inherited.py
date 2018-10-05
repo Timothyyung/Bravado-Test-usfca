@@ -4,7 +4,7 @@ from bravado_core.unmarshal import unmarshal_schema_object
 
 
 
-class benchmark_nested:
+class benchmark_inherited:
     def __init__(self):
         with open('../specs/spec_inherited.yaml', 'r') as f:
             self.raw_spec = yaml.load(f)
