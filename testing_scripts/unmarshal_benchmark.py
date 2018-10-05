@@ -24,7 +24,7 @@ class benchmark:
 
     def unmarshal__10k(self):
         spec_animal = unmarshal_schema_object(self.spec,self.animal,self.data)
-        print (spec_animal)
+        #print (spec_animal)
         
         
 

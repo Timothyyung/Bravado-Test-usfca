@@ -23,4 +23,4 @@ class benchmark_nested:
 
     def benchmark(self):    
         school_obj = unmarshal_schema_object(self.spec, self.school,self.data)
-        print (school_obj)
+        #print (school_obj)

@@ -26,7 +26,7 @@ class benchmark_array:
 
     def benchmark(self):
         persons_obj = unmarshal_schema_object(self.spec, self.persons,self.data)
-        print (persons_obj)
+        #print (persons_obj)
  
 
 
