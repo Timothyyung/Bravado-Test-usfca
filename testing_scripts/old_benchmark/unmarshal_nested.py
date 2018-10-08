@@ -10,18 +10,16 @@ class benchmark_nested:
             self.raw_spec = yaml.load(f)
 
         self.data = self.create_json()
-        key = list(self.data.keys())
         self.spec = Spec.from_dict(self.raw_spec)
-        self.school = self.raw_spec['definitions'][key[0]]
+        self.school = self.raw_spec['definitions']['School']
 
-   
+
 
     def create_json(self):
-        with open('../jsondata/nested.txt') as f:
+        with open('../jsondata/nested10k.txt') as f:
             data = json.load(f)
-        return data        
+        return data
 
 
-    def benchmark(self):    
+    def benchmark(self):
         school_obj = unmarshal_schema_object(self.spec, self.school,self.data)
-        #print (school_obj)
