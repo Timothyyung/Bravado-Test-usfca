@@ -18,10 +18,9 @@ class benchmark_array:
 
 
     def create_json(self):
-        with open('../jsondata/array.txt') as f:
+        with open('../jsondata/array10k.txt') as f:
             data = json.load(f)
         return data
 
     def benchmark(self):
-        persons_obj = unmarshal_schema_object(self.spec, self.persons,self.data)
-        print (persons_obj)
+        persons_obj = unmarshal_schema_object(self.spec, self.persons, self.data)
