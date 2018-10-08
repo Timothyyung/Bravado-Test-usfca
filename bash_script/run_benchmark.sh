@@ -5,8 +5,8 @@ git clone https://github.com/Timothyyung/bravado-opt-usfca.git
 while read branch
 do
   echo "Switching branch to $branch."
-  cd bravado-opt-usfca; git checkout $branch; cd ..; pip3 install -e bravado-opt-usfca >/dev/null; cd ..
-	cd testing_scripts; python3 benchmark.py; cd ../bash_script
+  cd bravado-opt-usfca; git checkout $branch; cd ..;  pip install -e bravado-opt-usfca >/dev/null ; cd ..
+	cd testing_scripts; python benchmark.py; cd ../bash_script
 done < branches.txt
 
-rm -rf bravado-opt-usfca
+sudo rm -rf bravado-opt-usfca
