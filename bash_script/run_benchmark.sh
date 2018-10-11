@@ -10,3 +10,5 @@ do
 done < branches.txt
 
 rm -rf bravado-opt-usfca
+rm -rf ../testing_scripts/old_benchmark/__pycache__
+rm -rf ../testing_scripts/__pycache__
