@@ -1,6 +1,6 @@
 ../specs/spec_array.yaml
-../jsondata/array10k.txt
+../jsondata/array.txt
 ../specs/zoo.yaml
-../jsondata/animal10k.txt
+../jsondata/animal.txt
 ../specs/spec_nested.yaml
-../jsondata/nested10k.txt
+../jsondata/nested.txt
