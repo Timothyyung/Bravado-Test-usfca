@@ -1,2 +1,0 @@
-
-benchmark:../specs/spec_array.yaml:4.210042816004716benchmark:../specs/zoo.yaml:5.849673477001488benchmark:../specs/spec_nested.yaml:11.75200763799512benchmark:../specs/spec_array.yaml:4.343891317999805benchmark:../specs/zoo.yaml:6.3853578150010435benchmark:../specs/spec_nested.yaml:11.712859785999171benchmark:../specs/spec_array.yaml:0.03893517800315749benchmark:../specs/spec_nested.yaml:0.03245815400441643benchmark:../specs/zoo.yaml:0.08904924800299341
