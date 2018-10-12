@@ -23,15 +23,15 @@ paths:
         '200':
           description: success
           schema:
-            $ref: '#/definitions/School'
+            $ref: '#/definitions/Classes'
 
 
 
 definitions:
-  School: 
+  Classes: 
     type: object
     properties: 
-      classes: 
+      Classes: 
         type: array
         items: 
           $ref: '#/definitions/Class'

@@ -20,9 +20,9 @@ def student_generator(size):
 
 def make_json(size):
     data = {}
-    data['School'] = []
+    data['Classes'] = []
     for x in range(0,int(size)):
-        data['School'].append({
+        data['Classes'].append({
             'className': id_generator(),
             'difficulty': difficulty_generator(),
             'optional': True,

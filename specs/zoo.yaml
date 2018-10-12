@@ -73,12 +73,12 @@ definitions:
   Animals:
     type: object
     properties:
-      animals:
+      Animals:
         description: a collection
         items: 
           $ref: '#definitions/Animal'
         type: array
-    required: [animals]
+    required: [Animals]
 
   ZooKeeper:
     type: object

@@ -69,12 +69,12 @@ definitions:
   Persons:
     type: object
     properties:
-      persons:
+      Persons:
         description: A collection of person.
         items:
           $ref: '#definitions/Person'
         type: array
-    required: [persons]
+    required: [Persons]
 
 
     
