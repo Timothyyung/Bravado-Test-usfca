@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 
 import yaml, json, cProfile
+import pyximport; pyximport.install()
 from bravado_core.spec import Spec
 from bravado_core.unmarshal import unmarshal_schema_object
 

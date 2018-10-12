@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-
+import sys
 import cProfile
 import yaml
-import _thread
 import threading
 import time
 import json
 import timeit
 import csv
+from pathlib import Path
 from unmarshal import benchmark
 
 
@@ -39,11 +39,21 @@ class testingThread(threading.Thread):
     
     def create_csv(self):
         myFields = ['spec','times','json_size','bravado_version']
-
-        myFile = open('test'+str(self.testid)+'.csv', 'w')
+        filexist = Path('./test'+str(self.testid)+'.csv')
+        header = False
+        if(filexist.is_file()):
+            myFile = open('test'+str(self.testid)+'.csv', 'a')
+            print ('file exists')
+        else:
+            myFile = open('test'+str(self.testid)+'.csv', 'w')
+            header = True
+            
         with myFile:
             writer = csv.DictWriter(myFile, fieldnames=myFields)
-            writer.writeheader()
+            
+            if(header):
+                writer.writeheader()
+
             for tdata in self.testsdata:
                 writer.writerow(tdata)
 
@@ -52,12 +62,13 @@ class testingThread(threading.Thread):
 if __name__ == "__main__":
     threadpool = []
     paths = []
+    version = sys.argv[1]
     with open('paths.txt', 'r') as f:
         paths = f.read().splitlines()
     
     
     for i in range(0,len(paths),2):
-        thread = testingThread(paths[i], paths[i+1],i,"master")
+        thread = testingThread(paths[i], paths[i+1],i,version)
         threadpool.append(thread)
 
     for thread in threadpool:
