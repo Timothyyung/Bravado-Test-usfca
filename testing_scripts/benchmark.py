@@ -25,7 +25,12 @@ class testingThread(threading.Thread):
     def test_benchmark(self):
         bench = benchmark(self.path1,self.path2)
         times = timeit.timeit(bench.unmarshal, number = 10)
-        print('benchmark {}'.format(times))        
+        with open('./test.txt', 'a') as outfile:
+            outfile.write('benchmark:' + self.path1 +':{}'.format(times))
+
+        print('benchmark:' + self.path1 +':{}'.format(times))        
+
+
 
 if __name__ == "__main__":
     threadpool = []
