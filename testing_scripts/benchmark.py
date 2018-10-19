@@ -23,15 +23,16 @@ class testingThread(threading.Thread):
         self.testsdata = []
 
     def run(self):
-        for i in range(0,10):
+        for i in range(0,1):
             self.test_benchmark()
         self.create_csv()
 
 
     def test_benchmark(self):
         self.times = timeit.timeit(self.bench.unmarshal, number = 10)
+       # self.bench.unmarshal()
         res = {'spec'  : self.path1,
-                'times': self.times,
+                'times': (self.times/10),
                 'json_size' : self.bench.json_size(),
                 'bravado_version': self.bravado_version}
         self.testsdata.append(res)
@@ -77,12 +78,4 @@ if __name__ == "__main__":
     for thread in threadpool:
         thread.join()
 
-"""
-    for i in range(0,len(paths),2):
-        bench = benchmark(paths[i],paths[i+1])
-        #bench.unmarshal()
-        print(paths[i], paths[i+1])
-        times = timeit.timeit(bench.unmarshal,number=10)
-        print('benchmark {}'.format(times))
-"""
 

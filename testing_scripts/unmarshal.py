@@ -1,7 +1,7 @@
 #-*- coding:utf-8 -*-
 
 import yaml, json, cProfile
-import pyximport; pyximport.install()
+
 from bravado_core.spec import Spec
 from bravado_core.unmarshal import unmarshal_schema_object
 
@@ -27,7 +27,7 @@ class benchmark:
 
     def unmarshal(self):
         obj = unmarshal_schema_object(self.spec, self.obj,self.data)
-        #print (obj)
+    #    print (obj)
 
     def json_size(self):
         return len(self.data[self.key[0]])
