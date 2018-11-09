@@ -13,14 +13,14 @@ class benchmark_inherited:
         self.spec = Spec.from_dict(self.raw_spec)
         self.petlist = self.raw_spec['definitions']['PetList']
 
-   
+
 
     def create_json(self):
         with open('../jsondata/inherited10k.txt') as f:
             data = json.load(f)
-        return data        
+        return data
 
 
-    def benchmark(self):    
+    def benchmark(self):
         school_obj = unmarshal_schema_object(self.spec, self.petlist,self.data)
         #print (school_obj)
