@@ -1,0 +1,35 @@
+swagger: '2.0'
+info:
+  title: Array of Primitive.
+  description: My Swagger template testing.
+  version: 1.0.0
+host: 0.0.0.0:8000
+basePath: /myswag
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /students:
+    get:
+      tags: [Guests]
+      responses:
+        '200':
+          description: success
+          schema:
+            $ref: '#definitions/Guests'
+
+
+definitions:
+  Guests:
+    type: object
+    properties:
+      guests:
+        description: A list of guests.
+        items:
+          type: string
+        type: array
+    required: [guests]
