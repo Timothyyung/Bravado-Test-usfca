@@ -4,13 +4,10 @@ import csv
 import sys
 import yaml
 import timeit
-from unmarshal_array import benchmark_array
-from unmarshal_nested import benchmark_nested
-from unmarshal_inherited import benchmark_inherited
 
 def write_csv(result):
-    with open(sys.argv[1] + '.csv', mode='w') as csv_file:
-        fieldnames = ['array', 'nested', 'inherited']
+    with open('result/' + sys.argv[1] + '.csv', mode='w') as csv_file:
+        fieldnames = ['array', 'array_primitives', 'nested', 'inherited']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         writer.writeheader()
@@ -31,13 +28,17 @@ if __name__ == "__main__":
 from unmarshal_array import benchmark_array
 bench = benchmark_array()"""
 
+    setup_dict['array_primitives'] = """
+from unmarshal_array_primitives import benchmark_array_primitives
+bench = benchmark_array_primitives()"""
+
     setup_dict['nested'] = """
 from unmarshal_nested import benchmark_nested
 bench = benchmark_nested()"""
 
-#    setup_dict['inherited'] = """
-#from unmarshal_inherited import benchmark_inherited
-#bench = benchmark_inherited()"""
+    setup_dict['inherited'] = """
+from unmarshal_inherited import benchmark_inherited
+bench = benchmark_inherited()"""
 
 
     result = {}
@@ -45,7 +46,7 @@ bench = benchmark_nested()"""
 
     if len(sys.argv) == 2:
         for key in setup_dict:
-            times = timeit.repeat(stmt=func, setup=setup_dict[key], number=1, repeat=10)
+            times = timeit.repeat(stmt=func, setup=setup_dict[key], number=1, repeat=3)
             #print(times)
             result[key] = calculate_avg(times)
             print('benchmark {} spec {}'.format(key, result[key]))
